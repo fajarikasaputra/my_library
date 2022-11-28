@@ -31,11 +31,19 @@ class BukuController extends Controller
      */
     public function create()
     {
-        $model = new Buku;
-        return view('bukuPages.create', compact(
-            'model'
-        ));
+        $buku = new Buku;
+        return view(
+            'bukuPages/create',
+            compact(
+                'buku'
+            ),
+            [
+                'title' => 'Data Buku'
+            ]
+        );
     }
+
+
 
     /**
      * Store a newly created resource in storage.
@@ -45,13 +53,13 @@ class BukuController extends Controller
      */
     public function store(Request $request)
     {
-        $model = new Buku;
-        $model->judul = $request->judul;
-        $model->penerbit = $request->penerbit;
-        $model->penulis = $request->penulis;
-        $model->tahun_terbit = $request->tahun_terbit;
-        $model->stok = $request->stok;
-        $model->save();
+        $buku = new Buku;
+        $buku->judul = $request->judul;
+        $buku->penerbit = $request->penerbit;
+        $buku->penulis = $request->penulis;
+        $buku->tahun_terbit = $request->tahun_terbit;
+        $buku->stok = $request->stok;
+        $buku->save();
 
 
         return redirect('buku');
@@ -76,7 +84,16 @@ class BukuController extends Controller
      */
     public function edit($id)
     {
-        //
+        $buku = Buku::find($id);
+        return view(
+            'bukuPages/edit',
+            compact(
+                'buku'
+            ),
+            [
+                'title' => 'Data Buku'
+            ]
+        );
     }
 
     /**
@@ -88,7 +105,16 @@ class BukuController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $buku = Buku::find($id);
+        $buku->judul = $request->judul;
+        $buku->penerbit = $request->penerbit;
+        $buku->penulis = $request->penulis;
+        $buku->tahun_terbit = $request->tahun_terbit;
+        $buku->stok = $request->stok;
+        $buku->save();
+
+
+        return redirect('buku');
     }
 
     /**
@@ -99,6 +125,8 @@ class BukuController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $buku = Buku::find($id);
+        $buku->delete();
+        return redirect('buku');
     }
 }
