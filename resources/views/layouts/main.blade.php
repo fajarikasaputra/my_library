@@ -9,7 +9,8 @@
     @include('includes.style')
     @stack('after-style')
 
-    <title>myLibrary | {{ $title }}</title>
+    {{-- <title>myLibrary | {{ $title }}</title> --}}
+    <title>myLibrary</title>
 </head>
 
 <body>

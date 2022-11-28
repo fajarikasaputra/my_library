@@ -16,8 +16,7 @@
 
                 <h5 class="sidebar-title">Perbukuan</h5>
 
-                <a href="/peminjaman" class="sidebar-item {{ $title === 'Peminjaman' ? 'active' : '' }} "
-                    onclick="toggleActive(this)">
+                <a href="/peminjaman" class="sidebar-item class="sidebar-item onclick="toggleActive(this)">
                     <!-- <img src="assets/balik.png" alt=""> -->
                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                         class="bi bi-clipboard" viewBox="0 0 16 16">
@@ -32,8 +31,7 @@
 
                 <!-- <a href="./employees.html" class="sidebar-item"> -->
                 <!-- <img src="./assets/img/global/users.svg" alt=""> -->
-                <a href="/pengembalian" class="sidebar-item {{ $title === 'Pengembalian' ? 'active' : '' }}"
-                    onclick="toggleActive(this)">
+                <a href="/pengembalian" class="sidebar-item active" onclick="toggleActive(this)">
                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                         class="bi bi-clipboard-check" viewBox="0 0 16 16">
                         <path fill-rule="evenodd"
@@ -48,8 +46,7 @@
 
                 <h5 class="sidebar-title">Pendataan</h5>
 
-                <a href="/pengunjung" class="sidebar-item {{ $title === 'Data Pengunjung' ? 'active' : '' }}"
-                    onclick="toggleActive(this)">
+                <a href="/pengunjung" class="sidebar-item" onclick="toggleActive(this)">
                     <!-- <img src="./assets/img/global/box.svg" alt=""> -->
                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                         class="bi bi-people" viewBox="0 0 16 16">
@@ -60,8 +57,8 @@
                     <span>Data Pengunjung</span>
                 </a>
 
-                <a href="/buku" class="sidebar-item {{ $title === 'Data Buku' ? 'active' : '' }}"
-                    onclick="toggleActive(this)">
+                {{-- <a href="/buku" class="sidebar-item {{ $title === 'Data Buku' ? 'active' : '' }}" --}}
+                <a href="/buku" class="sidebar-item' }}" onclick="toggleActive(this)">
                     <!-- <img src="./assets/img/global/home.svg" alt=""> -->
                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                         class="bi bi-book" viewBox="0 0 16 16">
@@ -74,8 +71,7 @@
 
                 <h5 class="sidebar-title">Riwayat</h5>
 
-                <a href="/riwayat" class="sidebar-item {{ $title === 'Riwayat Peminjaman' ? 'active' : '' }}"
-                    onclick="toggleActive(this)">
+                <a href="/riwayat" class="sidebar-item'" onclick="toggleActive(this)">
                     <!-- <img src="./assets/img/global/box.svg" alt=""> -->
                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                         class="bi bi-hourglass" viewBox="0 0 16 16">
@@ -89,9 +85,7 @@
                     <span>Riwayat Peminjaman</span>
                 </a>
 
-                <a href="/riwayatpengembalian"
-                    class="sidebar-item {{ $title === 'Riwayat Pengembalian' ? 'active' : '' }}"
-                    onclick="toggleActive(this)">
+                <a href="/riwayatpengembalian" class="sidebar-item'" onclick="toggleActive(this)">
                     <!-- <img src="./assets/img/global/box.svg" alt=""> -->
                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                         class="bi bi-hourglass" viewBox="0 0 16 16">
