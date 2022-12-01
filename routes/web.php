@@ -5,7 +5,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\BukuController;
 use App\Http\Controllers\homeController;
 use App\Http\Controllers\PeminjamanController;
-
+use App\Http\Controllers\PengunjungController;
+use App\Http\Controllers\PengembalianController;
 
 /*
 |--------------------------------------------------------------------------
@@ -61,10 +62,10 @@ use App\Http\Controllers\PeminjamanController;
 // });
 
 Route::get('/', [homeController::class, 'home']);
-Route::get('/peminjaman', [homeController::class, 'peminjaman']);
-Route::get('/pengembalian', [homeController::class, 'pengembalian']);
+// Route::get('/peminjaman', [homeController::class, 'peminjaman']);
+// Route::get('/pengembalian', [homeController::class, 'pengembalian']);
 // Route::get('/buku', [homeController::class, 'buku']);
-Route::get('/pengunjung', [homeController::class, 'pengunjung']);
+// Route::get('/pengunjung', [homeController::class, 'pengunjung']);
 Route::get('/riwayat', [homeController::class, 'riwayat']);
 Route::get('/riwayatpengembalian', [homeController::class, 'riwayatpengembalian']);
 
@@ -72,5 +73,8 @@ Route::post('/peminjaman', [homeController::class, 'peminjaman_post']);
 
 
 Route::resource('buku', BukuController::class);
+Route::resource('peminjaman', PeminjamanController::class);
+Route::resource('pengunjung', PengunjungController::class);
+Route::resource('pengembalian', PengembalianController::class);
 
 // Route::resource('/peminjaman', PeminjamanController::class);

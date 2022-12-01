@@ -13,27 +13,15 @@
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                    <th scope="row">ABC</th>
-                    <td>Mark</td>
-                    <td>KTP</td>
-                    <td>21/12/22</td>
-                    <td>2</td>
-                </tr>
-                <tr>
-                    <th scope="row">ABC</th>
-                    <td>Mark</td>
-                    <td>KTP</td>
-                    <td>21/12/22</td>
-                    <td>2</td>
-                </tr>
-                <tr>
-                    <th scope="row">ABC</th>
-                    <td>Mark</td>
-                    <td>KTP</td>
-                    <td>21/12/22</td>
-                    <td>2</td>
-                </tr>
+                @foreach ($peminjaman as $item)
+                    <tr>
+                        <th scope="row">{{ $peminjaman->id }}</th>
+                        <td>{{ $peminjaman->judul }}</td>
+                        <td>{{ $peminjaman->jaminan }}</td>
+                        <td>{{ $peminjaman->tanggal }}</td>
+                        <td>{{ $peminjaman->jumlah }}</td>
+                    </tr>
+                @endforeach
             </tbody>
         </table>
     @endsection

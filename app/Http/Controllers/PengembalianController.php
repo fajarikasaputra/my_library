@@ -5,11 +5,11 @@ namespace App\Http\Controllers;
 use App\Models\Buku;
 use App\Models\Peminjaman;
 use App\Models\Pengunjung;
+use App\Models\Pengembalian;
 use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
+use Illuminate\Routing\Controller;
 
-
-class PeminjamanController extends Controller
+class PengembalianController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -19,11 +19,12 @@ class PeminjamanController extends Controller
     public function index()
     {
         $peminjaman = Peminjaman::all();
-        $pengunjung = Pengunjung::all();
-
+        $pengembalian = Pengembalian::all();
         $buku = Buku::all();
-        return view('peminjaman', compact('buku', 'pengunjung', 'peminjaman'), [
-            'title' => 'Peminjaman'
+        // $pengunjung = Pengunjung::all();
+
+        return view('pengembalian', compact('buku', 'peminjaman', 'pengembalian'), [
+            'title' => 'Pengembalian'
         ]);
     }
 
@@ -34,11 +35,11 @@ class PeminjamanController extends Controller
      */
     public function create()
     {
-        $pengunjung = Pengunjung::all();
+        $peminjaman = Peminjaman::all();
+        $pengembalian = Pengembalian::all();
         $buku = Buku::all();
-        $peminjaman = new Peminjaman;
-        return view('peminjaman', compact('buku', 'pengunjung',  'peminjaman'), [
-            'title' => 'Peminjaman'
+        return view('pengembalian', compact('buku', 'peminjaman', 'pengembalian'), [
+            'title' => 'Pengembalian'
         ]);
     }
 
@@ -50,17 +51,12 @@ class PeminjamanController extends Controller
      */
     public function store(Request $request)
     {
-        // $peminjaman = new Peminjaman;
-        // $peminjaman->tanggal_peminjaman = $request->tanggal_peminjaman;
-        // $peminjaman->email = $request->email;
-        // $peminjaman->alamat = $request->alamat;
-        // $peminjaman->jaminan = $request->jaminan;
         $buku = Buku::all();
-        $peminjaman = Peminjaman::create($request->all());
-        $peminjaman->save();
+        $peminjaman = Peminjaman::all();
+        $pengembalian = Pengembalian::create($request->all());
+        $pengembalian->save();
 
-
-        return redirect('peminjaman');
+        return redirect('pengembalian');
     }
 
     /**

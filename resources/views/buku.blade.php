@@ -2,7 +2,7 @@
 
 @section('container')
     <div class="mx-auto mt-5" style="width: 900px;">
-        <a class="btn btn-info" href="{{ url('buku/create') }}">Tambah Buku</a>
+        <a class="btn btn-info mt-5 mb-5" href="{{ url('buku/create') }}">Tambah Buku</a>
         <table class="table">
             <thead class="thead-dark">
                 <tr>

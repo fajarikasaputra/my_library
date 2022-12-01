@@ -2,14 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Buku;
-use App\Models\Peminjaman;
 use App\Models\Pengunjung;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
-
-class PeminjamanController extends Controller
+class PengunjungController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -18,12 +15,12 @@ class PeminjamanController extends Controller
      */
     public function index()
     {
-        $peminjaman = Peminjaman::all();
         $pengunjung = Pengunjung::all();
 
-        $buku = Buku::all();
-        return view('peminjaman', compact('buku', 'pengunjung', 'peminjaman'), [
-            'title' => 'Peminjaman'
+        return view('pengunjung', compact(
+            'pengunjung'
+        ), [
+            'title' => 'Data Pengunjung'
         ]);
     }
 
@@ -34,11 +31,10 @@ class PeminjamanController extends Controller
      */
     public function create()
     {
-        $pengunjung = Pengunjung::all();
-        $buku = Buku::all();
-        $peminjaman = new Peminjaman;
-        return view('peminjaman', compact('buku', 'pengunjung',  'peminjaman'), [
-            'title' => 'Peminjaman'
+        $pengunjung = new Pengunjung;
+
+        return view('pengunjungPages/create', compact('pengunjung'), [
+            'title' => 'Data Pengunjung'
         ]);
     }
 
@@ -50,17 +46,14 @@ class PeminjamanController extends Controller
      */
     public function store(Request $request)
     {
-        // $peminjaman = new Peminjaman;
-        // $peminjaman->tanggal_peminjaman = $request->tanggal_peminjaman;
-        // $peminjaman->email = $request->email;
-        // $peminjaman->alamat = $request->alamat;
-        // $peminjaman->jaminan = $request->jaminan;
-        $buku = Buku::all();
-        $peminjaman = Peminjaman::create($request->all());
-        $peminjaman->save();
+        $pengunjung = new Pengunjung;
+        $pengunjung->nama = $request->nama;
+        $pengunjung->email = $request->email;
+        $pengunjung->alamat = $request->alamat;
+        $pengunjung->jaminan = $request->jaminan;
+        $pengunjung->save();
 
-
-        return redirect('peminjaman');
+        return redirect('pengunjung');
     }
 
     /**
@@ -82,7 +75,8 @@ class PeminjamanController extends Controller
      */
     public function edit($id)
     {
-        //
+        $pengunjung = Pengunjung::find($id);
+        return view('pengungPages/edit', compact('pengunjung'), ['title' => 'Data Pengunjung']);
     }
 
     /**
@@ -94,7 +88,14 @@ class PeminjamanController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $pengunjung = Pengunjung::find($id);
+        $pengunjung->nama = $request->nama;
+        $pengunjung->email = $request->email;
+        $pengunjung->alamat = $request->alamat;
+        $pengunjung->jaminan = $request->jaminan;
+        $pengunjung->save();
+
+        return redirect('pengunjung');
     }
 
     /**
@@ -105,6 +106,8 @@ class PeminjamanController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $buku = Pengunjung::find($id);
+        $buku->delete();
+        return redirect('pengunjung');
     }
 }
