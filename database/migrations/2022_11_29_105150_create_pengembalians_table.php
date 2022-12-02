@@ -16,7 +16,6 @@ return new class extends Migration
         Schema::create('pengembalians', function (Blueprint $table) {
             $table->id();
             $table->date('tanggal_pengembalian');
-            $table->integer('jumlah');
             $table->foreignId('buku_id');
             $table->foreignId('pengunjung_id');
             $table->timestamps();

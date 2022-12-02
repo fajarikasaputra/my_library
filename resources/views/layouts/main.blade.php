@@ -16,10 +16,14 @@
 <body>
     <div class="screen-cover d-none d-xl-none"></div>
 
-    @include('partials.navbar')
+    <div class="flex">
 
-    <div class="container">
-        @yield('container')
+        <div class="container">
+            @include('partials.navbar')
+        </div>
+        <div class="container ">
+            @yield('container')
+        </div>
     </div>
 
     @stack('before-script')

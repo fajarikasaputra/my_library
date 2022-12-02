@@ -16,6 +16,6 @@ class Buku extends Model
     }
     public function pengembalian()
     {
-        return $this->hasMany(Peminjaman::class);
+        return $this->hasMany(Pengembalian::class);
     }
 }

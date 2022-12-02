@@ -1,9 +1,9 @@
 @extends('layouts.main')
 
 @section('container')
-    <div class="mx-auto" style="width: 200px;">
+    <div class="mx-auto mt-5" style="width: 900px;">
         <table class="table">
-            <thead class="thead-dark">
+            <thead class="table table-bordered">
                 <tr>
                     <th scope="col">Judul Buku</th>
                     <th scope="col">Nama Peminjam</th>
@@ -13,13 +13,13 @@
                 </tr>
             </thead>
             <tbody>
-                @foreach ($peminjaman as $item)
+                @foreach ($riwayat_peminjaman as $item)
                     <tr>
-                        <th scope="row">{{ $peminjaman->id }}</th>
-                        <td>{{ $peminjaman->judul }}</td>
-                        <td>{{ $peminjaman->jaminan }}</td>
-                        <td>{{ $peminjaman->tanggal }}</td>
-                        <td>{{ $peminjaman->jumlah }}</td>
+                        <th scope="row">{{ $item->buku->judul }}</th>
+                        <td>{{ $item->pengunjung->nama }}</td>
+                        <td>{{ $item->pengunjung->jaminan }}</td>
+                        <td>{{ $item->updated_at }}</td>
+                        <td>{{ $item->jumlah }}</td>
                     </tr>
                 @endforeach
             </tbody>

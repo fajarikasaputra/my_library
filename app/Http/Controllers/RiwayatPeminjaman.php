@@ -5,11 +5,10 @@ namespace App\Http\Controllers;
 use App\Models\Buku;
 use App\Models\Peminjaman;
 use App\Models\Pengunjung;
-use App\Models\Pengembalian;
 use Illuminate\Http\Request;
-use Illuminate\Routing\Controller;
+use App\Http\Controllers\Controller;
 
-class PengembalianController extends Controller
+class RiwayatPeminjaman extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -18,18 +17,11 @@ class PengembalianController extends Controller
      */
     public function index()
     {
-        $peminjaman = Peminjaman::all();
-        $pengembalian = Pengembalian::all();
+        $riwayat_peminjaman = Peminjaman::all();
         $pengunjung = Pengunjung::all();
         $buku = Buku::all();
-        // $pengunjung = Pengunjung::all();
-        // $bukuYGPINJAM = Peminjaman::where('buku_id', $search)->get();
-
-        return view('pengembalian', [
-            'title' => 'Pengembalian',
-            // 'peminjam' => Peminjaman::has('Pengunjung')->get()->id,
-            'peminjam' => Peminjaman::all(),
-            'buku' => $buku
+        return view('riwayat', compact('riwayat_peminjaman', 'pengunjung', 'buku'), [
+            'title' => 'Riwayat Peminjaman'
         ]);
     }
 
@@ -40,13 +32,7 @@ class PengembalianController extends Controller
      */
     public function create()
     {
-        $peminjaman = Peminjaman::all();
-        $pengembalian = Pengembalian::all();
-        $pengunjung = Pengunjung::all();
-        $buku = Buku::all();
-        return view('pengembalian', compact('buku', 'peminjaman', 'pengembalian', 'pengunjung'), [
-            'title' => 'Pengembalian'
-        ]);
+        //
     }
 
     /**
@@ -57,13 +43,7 @@ class PengembalianController extends Controller
      */
     public function store(Request $request)
     {
-        $buku = Buku::all();
-        $peminjaman = Peminjaman::all();
-        $pengunjung = Pengunjung::all();
-        $pengembalian = Pengembalian::create($request->all());
-        $pengembalian->save();
-
-        return redirect('pengembalian');
+        //
     }
 
     /**

@@ -2,7 +2,13 @@
 
 @section('container')
     <div class="mx-auto mt-5" style="width: 900px;">
-        <a class="btn btn-info mt-5 mb-5" href="{{ url('pengunjung/create') }}">Tambah Buku</a>
+        <a class="btn btn-info mt-5 mb-5" href="{{ url('pengunjung/create') }}">Tambah Pengunjung</a>
+        <form class="form-inline">
+            <div class="form-group mx-sm-3 mb-2">
+                <label for="inputPassword2" class="sr-only">Cari Pengunjung</label>
+                <input type="search" class="form-control" id="inputPassword2" placeholder="Password">
+            </div>
+        </form>
         <table class="table">
             <thead class="table table-bordered">
                 <tr>
@@ -23,6 +29,9 @@
                         <td>{{ $kunjung->email }}</td>
                         <td>{{ $kunjung->alamat }}</td>
                         <td>{{ $kunjung->jaminan }}</td>
+                        <td><a class="btn btn-warning   "
+                                href="{{ url('pengunjung/' . $kunjung->id . '/edit') }}">Pinjamkan</a>
+                        </td>
                         <td><a class="btn btn-info" href="{{ url('pengunjung/' . $kunjung->id . '/edit') }}">Update</a>
                         </td>
                         <td>
