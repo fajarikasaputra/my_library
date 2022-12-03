@@ -10,13 +10,13 @@ class Pengembalian extends Model
     use HasFactory;
     protected $guarded = ['$id'];
 
-    public function buku()
+    public function peminjaman()
     {
-        return $this->belongsTo(Buku::class);
+        return $this->belongsTo(Peminjaman::class);
     }
 
-    public function pengunjung()
-    {
-        return $this->belongsTo(Pengunjung::class);
-    }
+    // public function pengunjung()
+    // {
+    //     return $this->belongsTo(Pengunjung::class);
+    // }
 }

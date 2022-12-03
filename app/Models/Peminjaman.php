@@ -19,4 +19,9 @@ class Peminjaman extends Model
     {
         return $this->belongsTo(Pengunjung::class);
     }
+
+    public function pengembalian()
+    {
+        return $this->hasOne(Pengembalian::class);
+    }
 }

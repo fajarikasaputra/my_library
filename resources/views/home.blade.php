@@ -1,5 +1,7 @@
 @extends('layouts.main')
 
 @section('container')
-    <h1>Landing Page</h1>
+    <div class="item">
+        <h1>Landing Page</h1>
+    </div>
 @endsection

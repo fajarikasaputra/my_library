@@ -15,9 +15,10 @@ return new class extends Migration
     {
         Schema::create('pengembalians', function (Blueprint $table) {
             $table->id();
-            $table->date('tanggal_pengembalian');
-            $table->foreignId('buku_id');
-            $table->foreignId('pengunjung_id');
+            // $table->integer('jumlah');
+            // $table->date('tanggal_pengembalian');
+            $table->foreignId('peminjaman_id');
+            // $table->foreignId('pengunjung_id');
             $table->timestamps();
         });
     }

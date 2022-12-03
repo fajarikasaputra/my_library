@@ -17,11 +17,11 @@ class RiwayatPeminjaman extends Controller
      */
     public function index()
     {
-        $riwayat_peminjaman = Peminjaman::all();
+        $peminjaman = Peminjaman::all();
         $pengunjung = Pengunjung::all();
         $buku = Buku::all();
-        return view('riwayat', compact('riwayat_peminjaman', 'pengunjung', 'buku'), [
-            'title' => 'Riwayat Peminjaman'
+        return view('peminjaman', compact('peminjaman', 'pengunjung', 'buku'), [
+            'title' => 'Peminjaman'
         ]);
     }
 
@@ -32,7 +32,18 @@ class RiwayatPeminjaman extends Controller
      */
     public function create()
     {
-        //
+        $buku = Buku::all();
+
+        $peminjaman = new RiwayatPeminjaman;
+        $peminjamans = new Peminjaman;
+        $buku = new Buku;
+        return view(
+            'peminjamanPages/create',
+            compact('peminjaman', 'peminjamans', 'buku'),
+            [
+                'title' => 'Peminjaman'
+            ]
+        );
     }
 
     /**
@@ -43,7 +54,12 @@ class RiwayatPeminjaman extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $buku = Buku::all();
+        $peminjaman = Peminjaman::create($request->all());
+        $peminjaman->save();
+
+
+        return redirect('peminjaman');
     }
 
     /**

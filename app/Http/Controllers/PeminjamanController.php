@@ -37,7 +37,7 @@ class PeminjamanController extends Controller
         $pengunjung = Pengunjung::all();
         $buku = Buku::all();
         $peminjaman = new Peminjaman;
-        return view('peminjaman', compact('buku', 'pengunjung',  'peminjaman'), [
+        return view('peminjamanPages/create', compact('buku', 'pengunjung',  'peminjaman'), [
             'title' => 'Peminjaman'
         ]);
     }
@@ -60,7 +60,7 @@ class PeminjamanController extends Controller
         $peminjaman->save();
 
 
-        return redirect('peminjaman');
+        return redirect('riwayat');
     }
 
     /**
@@ -71,7 +71,6 @@ class PeminjamanController extends Controller
      */
     public function show($id)
     {
-        //
     }
 
     /**
@@ -82,7 +81,14 @@ class PeminjamanController extends Controller
      */
     public function edit($id)
     {
-        //
+        $peminjaman = Peminjaman::find($id);
+        return view(
+            'peminjamanPages/edit',
+            compact('peminjaman'),
+            [
+                'title' => 'Peminjaman'
+            ]
+        );
     }
 
     /**
@@ -94,7 +100,11 @@ class PeminjamanController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $peminjaman = Peminjaman::find($id);
+        $pengunjung = Pengunjung::all();
+        $peminjaman->save();
+
+        return redirect('peminjaman');
     }
 
     /**
@@ -105,6 +115,8 @@ class PeminjamanController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $peminjaman = Peminjaman::find($id);
+        $peminjaman->delete();
+        return redirect('peminjaman');
     }
 }

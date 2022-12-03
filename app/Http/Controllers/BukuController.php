@@ -13,9 +13,13 @@ class BukuController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $buku = Buku::all();
+        if ($request->has('search')) {
+            $buku = Buku::where('judul', 'LIKE', '%' . $request->search . '$')->paginate(5);
+        } else {
+            $buku = Buku::paginate(5);
+        }
 
         return view('buku', compact(
             'buku'

@@ -13,12 +13,17 @@ class PengunjungController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $pengunjung = Pengunjung::all();
+        if ($request->has('search')) {
+            $pengunjung = Pengunjung::where('Nama', 'LIKE', '%' . $request->search . '$')->paginate(5);
+        } else {
+            $pengunjung = Pengunjung::paginate(5);
+        }
 
         return view('pengunjung', compact(
-            'pengunjung'
+            'pengunjung',
+            'request'
         ), [
             'title' => 'Data Pengunjung'
         ]);
