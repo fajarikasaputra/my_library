@@ -81,14 +81,17 @@ class PeminjamanController extends Controller
      */
     public function edit($id)
     {
+        $buku = Buku::find($id);
+        $pengunjung = Pengunjung::find($id);
         $peminjaman = Peminjaman::find($id);
-        return view(
-            'peminjamanPages/edit',
-            compact('peminjaman'),
-            [
-                'title' => 'Peminjaman'
-            ]
-        );
+        return view('peminjamanPages/edit', compact('peminjaman', 'buku', 'pengunjung'), ['title' => 'Peminjaman']);
+        // return view(
+        //     'peminjamanPages/edit',
+        //     compact('peminjaman'),
+        //     [
+        //         'title' => 'Peminjaman'
+        //     ]
+        // );
     }
 
     /**

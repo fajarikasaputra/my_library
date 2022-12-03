@@ -21,9 +21,9 @@
                         <td>{{ $item->pengunjung->jaminan }}</td>
                         <td>{{ $item->updated_at }}</td>
                         <td>{{ $item->jumlah }}</td>
-                        <td><a class="btn btn-info" href="{{ url('riwayat/' . $item->id . 'edit') }}">Update</a></td>
+                        <td><a class="btn btn-info" href="{{ url('peminjaman/' . $item->id . '/edit') }}">Update</a></td>
                         <td>
-                            <form action="{{ url('riwayat/' . $item->id) }}" method="POST">
+                            <form action="{{ url('peminjaman/' . $item->id) }}" method="POST">
                                 @csrf
                                 <input type="hidden" name="_method" value="DELETE">
                                 <button class="btn btn-danger" type="submit">Delete</button>
