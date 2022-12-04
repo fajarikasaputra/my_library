@@ -9,7 +9,9 @@
                 <button class="btn btn-info" type="submit">Search</button>
             </form>
         </nav>
-        <a class="btn btn-info mt-5 mb-5" href="{{ url('pengunjung/create') }}">Tambah Pengunjung</a>
+        <a class="btn btn-success mt-5 mb-5" href="{{ url('pengunjung/create') }}">Tambah Pengunjung</a>
+        <br />
+        <br />
         <table class="table mt-5">
             <thead class="table">
                 <tr>
@@ -30,10 +32,8 @@
                         <td>{{ $kunjung->email }}</td>
                         <td>{{ $kunjung->alamat }}</td>
                         <td>{{ $kunjung->jaminan }}</td>
-                        <td><a class="btn btn-warning   "
-                                href="{{ url('pengunjung/' . $kunjung->id . '/edit') }}">Pinjamkan</a>
-                        </td>
-                        <td><a class="btn btn-info" href="{{ url('pengunjung/' . $kunjung->id . '/edit') }}">Update</a>
+
+                        <td><a class="btn btn-warning" href="{{ url('pengunjung/' . $kunjung->id . '/edit') }}">Update</a>
                         </td>
                         <td>
                             <form action="{{ url('pengunjung/' . $kunjung->id) }}" method="POST">

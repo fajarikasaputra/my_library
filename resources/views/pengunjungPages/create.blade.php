@@ -7,15 +7,15 @@
             @csrf
             <div class="form-group">
                 <label for="inputNama">Nama</label>
-                <input type="text" class="form-control" id="nama" placeholder="nama" name="nama">
+                <input type="text" class="form-control" id="nama" placeholder="Nama Pengunjung" name="nama">
             </div>
             <div class="form-group">
                 <label for="inputEmail">Email</label>
-                <input type="text" class="form-control" id="email" placeholder="email" name="email">
+                <input type="text" class="form-control" id="email" placeholder="Email Pengunjung" name="email">
             </div>
             <div class="form-group">
                 <label for="inputAlamat">Alamat</label>
-                <input type="text" class="form-control" id="alamat" placeholder="alamat" name="alamat">
+                <input type="text" class="form-control" id="alamat" placeholder="Alamat Pengunjung" name="alamat">
             </div>
             <div class="form-group">
                 <label for="inputTanggal">Jaminan</label>
@@ -32,7 +32,8 @@
                 <option>KTP</option>
                 <option>KTM</option>
             </select> --}}
-            <button type="submit" class="btn btn-primary btn-lg">Simpan Data</button>
+            <br />
+            <button type="submit" class="btn btn-primary">Simpan Data Pengunjung</button>
         </form>
     </div>
 @endsection

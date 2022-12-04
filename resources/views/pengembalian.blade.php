@@ -8,7 +8,9 @@
                 <button class="btn btn-info" type="submit">Search</button>
             </form>
         </nav>
-        <a class="btn btn-info mt-5 mb-5" href="{{ url('pengembalian/create') }}">Tambah Pengembalian</a>
+        <a class="btn btn-success mt-5 mb-5" href="{{ url('pengembalian/create') }}">Tambah Pengembalian</a>
+        <br />
+        <br />
         <table class="table">
             <thead class="mt-5 table ">
                 <tr>
@@ -16,6 +18,7 @@
                     <th scope="col">Nama Peminjam</th>
                     <th scope="col">Jaminan</th>
                     <th scope="col">Tanggal Pengembalian</th>
+                    <th scope="col">Aksi</th>
                 </tr>
             </thead>
             <tbody>
@@ -25,7 +28,8 @@
                         <td>{{ $item->peminjaman->pengunjung->nama }}</td>
                         <td>{{ $item->peminjaman->pengunjung->jaminan }}</td>
                         <td>{{ $item->updated_at }}</td>
-                        <td><a class="btn btn-info" href="{{ url('pengembalian/' . $item->id . '/edit') }}">Update</a></td>
+                        <td><a class="btn btn-warning" href="{{ url('pengembalian/' . $item->id . '/edit') }}">Update</a>
+                        </td>
                         <td>
                             <form action="{{ url('pengembalian/' . $item->id) }}" method="POST">
                                 @csrf

@@ -92,11 +92,15 @@ class PengembalianController extends Controller
 
         $buku = Buku::find($id);
         $pengunjung = Pengunjung::find($id);
-        $peminjaman = Peminjaman::find($id);
+        $peminjaman = Peminjaman::all();
         $pengembalian = Pengembalian::find($id);
         return view(
             'pengembalianPages/edit',
-            compact('peminjaman', 'buku', 'pengunjung', 'pengembalian'),
+            [
+                'peminjaman' => $peminjaman,
+                'pengunjung' => $pengunjung,
+                'pengembalian' => $pengembalian
+            ],
             ['title' => 'Pengembalian']
         );
     }
@@ -110,14 +114,16 @@ class PengembalianController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $buku = Buku::find($id);
-        $pengunjung = Pengunjung::find($id);
-        $peminjaman = Peminjaman::find($id);
+        // $buku = Buku::find($id);
+        // $pengunjung = Pengunjung::find($id);
+        // $pengembalian = Pengembalian::all();
+        // $peminjaman = Peminjaman::find($id);
         $pengembalian = Pengembalian::find($id);
-        $pengembalian = Pengembalian::all();
+        $pengembalian->peminjaman_id = $request->peminjaman_id;
+        $pengembalian->peminjaman->nama = $request->nama;
         $pengembalian->save();
 
-        return redirect('pengembalian', compact('buku', 'pengembalian', 'peminjaman', 'pengunjung'));
+        return redirect('pengembalian');
     }
 
     /**

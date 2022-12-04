@@ -85,10 +85,14 @@ class PeminjamanController extends Controller
      */
     public function edit($id)
     {
-        $buku = Buku::find($id);
-        $pengunjung = Pengunjung::find($id);
+        $buku = Buku::all();
+        $pengunjung = Pengunjung::all();
         $peminjaman = Peminjaman::find($id);
-        return view('peminjamanPages/edit', compact('peminjaman', 'buku', 'pengunjung'), ['title' => 'Peminjaman']);
+        return view('peminjamanPages/edit', [
+            'buku' => $buku,
+            'pengunjung' => $pengunjung,
+            'peminjaman' => $peminjaman,
+        ], ['title' => 'Peminjaman']);
         // return view(
         //     'peminjamanPages/edit',
         //     compact('peminjaman'),
@@ -107,13 +111,13 @@ class PeminjamanController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $buku = Buku::find($id);
-        $pengunjung = Pengunjung::find($id);
         $peminjaman = Peminjaman::find($id);
-        $peminjaman = Peminjaman::all();
+        $peminjaman->pengunjung_id = $request->pengunjung_id;
+        $peminjaman->buku_id = $request->buku_id;
+        $peminjaman->jumlah = $request->jumlah;
         $peminjaman->save();
 
-        return redirect('peminjaman', compact('buku', 'peminjaman', 'pengunjung'));
+        return redirect('peminjaman');
     }
 
     /**

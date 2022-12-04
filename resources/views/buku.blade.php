@@ -8,7 +8,9 @@
                 <button class="btn btn-info" type="submit">Search</button>
             </form>
         </nav>
-        <a class="btn btn-info mt-5 mb-5" href="{{ url('buku/create') }}">Tambah Buku</a>
+        <a class="btn btn-success mt-5 mb-5" href="{{ url('buku/create') }}">Tambah Buku</a>
+        <br />
+        <br />
         <table class="table">
             <thead class="thead-dark">
                 <tr>
@@ -30,7 +32,7 @@
                         <td>{{ $bukuku->penerbit }}</td>
                         <td>{{ $bukuku->tahun_terbit }}</td>
                         <td>{{ $bukuku->stok }}</td>
-                        <td><a class="btn btn-info" href="{{ url('buku/' . $bukuku->id . '/edit') }}">Update</a></td>
+                        <td><a class="btn btn-warning" href="{{ url('buku/' . $bukuku->id . '/edit') }}">Update</a></td>
                         <td>
                             <form action="{{ url('buku/' . $bukuku->id) }}" method="POST">
                                 @csrf

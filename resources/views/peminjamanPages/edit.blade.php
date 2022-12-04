@@ -36,8 +36,9 @@
                                             <label for="">Pilih Judul Buku</label>
                                             <select name="buku_id" class="form-control selectpicker" id="select-country"
                                                 data-live-search="true">
-                                                @foreach ($peminjaman->$buku as $item)
-                                                    <option value="{{ $peminjaman->id }}">
+                                                @foreach ($buku as $item)
+                                                    <option @if ($peminjaman->buku_id == $item->id) selected="selected" @endif
+                                                        value="{{ $item->id }}">
                                                         {{ $item->judul }}</option>
                                                 @endforeach
                                                 {{-- @foreach ($buku as $item)
@@ -48,9 +49,10 @@
 
                                             <select name="pengunjung_id" class="form-control selectpicker"
                                                 id="select-country" data-live-search="true">
-                                                {{-- @foreach ($pengunjung as $data) --}}
-                                                {{-- <option value="{{ $pengunjung->id }}"> {{ $pengunjung->nama }}</option> --}}
-                                                {{-- @endforeach --}}
+                                                @foreach ($pengunjung as $item)
+                                                    <option @if ($peminjaman->pengunjung_id == $item->id) selected="selected" @endif
+                                                        value="{{ $item->id }}">{{ $item->nama }}</option>
+                                                @endforeach
                                             </select>
                                             {{-- <select name="pengunjung_id" id="brow"> --}}
                                             {{-- </select> --}}
@@ -62,7 +64,7 @@
                                             </div>
                                             {{-- Jumlah: <input type="text" name="jumlah"><br /> --}}
                                             <div class="form-group center">
-                                                <button type="submit" class="btn btn-primary btn-lg">Pinjamkan</button>
+                                                <button type="submit" class="btn btn-primary">Update</button>
                                             </div>
 
                                         </div>

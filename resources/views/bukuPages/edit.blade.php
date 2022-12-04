@@ -36,7 +36,8 @@
             Penerbit: <input type="text" name="penerbit" value="{{ $buku->penerbit }}"><br />
             Tahun Terbit: <input type="text" name="tahun_terbit" value="{{ $buku->tahun_terbit }}"><br />
             Stok: <input type="text" name="stok" value="{{ $buku->stok }}"><br /> --}}
-            <button type="submit" class="btn btn-primary btn-lg">Simpan Data</button>
+            <br />
+            <button type="submit" class="btn btn-primary ">Update</button>
         </form>
     </div>
 @endsection
