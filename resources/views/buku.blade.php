@@ -50,3 +50,7 @@
 
     </div>
 @endsection
+
+@section('modal')
+    swal("hello world")
+@endsection

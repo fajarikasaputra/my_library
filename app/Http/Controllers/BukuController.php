@@ -13,10 +13,18 @@ class BukuController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+
+
     public function index(Request $request)
     {
         if ($request->has('search')) {
-            $buku = Buku::where('judul', 'LIKE', '%' . $request->search . '%')->paginate(5);
+            $buku = Buku::where('judul', 'LIKE', '%' . $request->search . '%')
+                ->orWhere('penulis', 'LIKE', '%' . request('search') . '%')
+                ->orWhere('penerbit', 'LIKE', '%' . request('search') . '%')
+                ->orWhere('tahun_terbit', 'LIKE', '%' . request('search') . '%')
+                ->orWhere('stok', 'LIKE', '%' . request('search') . '%')
+                ->paginate(5);
         } else {
             $buku = Buku::paginate(5);
         }

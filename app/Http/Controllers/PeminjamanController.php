@@ -18,11 +18,13 @@ class PeminjamanController extends Controller
      */
     public function index(Request $request)
     {
-        $peminjaman = Peminjaman::all();
+        // $peminjaman = Peminjaman::all();
         $pengunjung = Pengunjung::all();
         $buku = Buku::all();
         if ($request->has('search')) {
-            $peminjaman = Peminjaman::where('judul', 'LIKE', '%' . $request->search . '$')->paginate(5);
+            $peminjaman = Peminjaman::where('created_at', 'LIKE', '%' . $request->search . '%')
+                ->orWhere('jumlah', 'LIKE', '%' . $request->search . '%')
+                ->paginate(5);
         } else {
             $peminjaman = Peminjaman::paginate(5);
         }

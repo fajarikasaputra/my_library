@@ -7,15 +7,15 @@
             @csrf
             <div class="form-group">
                 <label for="inputJudul">Judul</label>
-                <input type="text" class="form-control" id="judul" placeholder="Judul" name="Judul">
+                <input type="text" class="form-control" id="judul" placeholder="Judul" name="judul">
             </div>
             <div class="form-group">
                 <label for="inputPenulis">Penulis</label>
-                <input type="text" class="form-control" id="penulis" placeholder="penulis" name="Penulis">
+                <input type="text" class="form-control" id="penulis" placeholder="penulis" name="penulis">
             </div>
             <div class="form-group">
                 <label for="inputPenerbit">Penerbit</label>
-                <input type="text" class="form-control" id="penerbit" placeholder="penerbit" name="Penerbit">
+                <input type="text" class="form-control" id="penerbit" placeholder="penerbit" name="penerbit">
             </div>
             <div class="form-group">
                 <label for="inputTahun">Tahun Terbit</label>
