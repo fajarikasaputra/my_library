@@ -17,15 +17,19 @@ class BukuController extends Controller
     {
         if ($request->has('search')) {
             $buku = Buku::where('judul', 'LIKE', '%' . $request->search . '$')->paginate(5);
+            return view('buku', compact(
+                'buku'
+            ), [
+                'title' => 'Data Buku'
+            ]);
         } else {
             $buku = Buku::paginate(5);
+            return view('buku', compact(
+                'buku'
+            ), [
+                'title' => 'Data Buku'
+            ]);
         }
-
-        return view('buku', compact(
-            'buku'
-        ), [
-            'title' => 'Data Buku'
-        ]);
     }
 
     /**

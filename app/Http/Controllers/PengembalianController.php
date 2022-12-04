@@ -16,20 +16,22 @@ class PengembalianController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
+        if ($request->has('search')) {
+            $pengunjung = Pengunjung::where('nama', 'LIKE', '%' . $request->search . '$')->paginate(5);
+        } else {
+            $pengembalian = Pengembalian::paginate(5);
+        }
         $peminjaman = Peminjaman::all();
-        $pengembalian = Pengembalian::all();
+        // $pengembalian = Pengembalian::all();
         $pengunjung = Pengunjung::all();
         $buku = Buku::all();
         // $pengunjung = Pengunjung::all();
         // $bukuYGPINJAM = Peminjaman::where('buku_id', $search)->get();
 
-        return view('pengembalian', [
-            'title' => 'Pengembalian',
-            // 'peminjam' => Peminjaman::has('Pengunjung')->get()->id,
-            'peminjam' => Peminjaman::all(),
-            'buku' => $buku
+        return view('pengembalian', compact('buku', 'peminjaman', 'pengembalian', 'pengunjung'), [
+            'title' => 'Pengembalian'
         ]);
     }
 
@@ -43,8 +45,9 @@ class PengembalianController extends Controller
         $peminjaman = Peminjaman::all();
         $pengembalian = Pengembalian::all();
         $pengunjung = Pengunjung::all();
+        $pengembalian = new Pengembalian();
         $buku = Buku::all();
-        return view('pengembalian', compact('buku', 'peminjaman', 'pengembalian', 'pengunjung'), [
+        return view('pengembalianPages/create', compact('buku', 'peminjaman', 'pengembalian', 'pengunjung'), [
             'title' => 'Pengembalian'
         ]);
     }
@@ -57,9 +60,10 @@ class PengembalianController extends Controller
      */
     public function store(Request $request)
     {
-        $buku = Buku::all();
-        $peminjaman = Peminjaman::all();
-        $pengunjung = Pengunjung::all();
+        // $buku = Buku::all();
+        // $peminjaman = Peminjaman::all();
+        // $pengunjung = Pengunjung::all();
+        // $peminjaman = Peminjaman::create($request->all());
         $pengembalian = Pengembalian::create($request->all());
         $pengembalian->save();
 
@@ -85,7 +89,16 @@ class PengembalianController extends Controller
      */
     public function edit($id)
     {
-        //
+
+        $buku = Buku::find($id);
+        $pengunjung = Pengunjung::find($id);
+        $peminjaman = Peminjaman::find($id);
+        $pengembalian = Pengembalian::find($id);
+        return view(
+            'pengembalianPages/edit',
+            compact('peminjaman', 'buku', 'pengunjung', 'pengembalian'),
+            ['title' => 'Pengembalian']
+        );
     }
 
     /**
@@ -97,7 +110,14 @@ class PengembalianController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $buku = Buku::find($id);
+        $pengunjung = Pengunjung::find($id);
+        $peminjaman = Peminjaman::find($id);
+        $pengembalian = Pengembalian::find($id);
+        $pengembalian = Pengembalian::all();
+        $pengembalian->save();
+
+        return redirect('pengembalian', compact('buku', 'pengembalian', 'peminjaman', 'pengunjung'));
     }
 
     /**
@@ -108,6 +128,8 @@ class PengembalianController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $pengembalian = Pengembalian::find($id);
+        $pengembalian->delete();
+        return redirect('pengembalian');
     }
 }

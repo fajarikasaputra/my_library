@@ -15,7 +15,7 @@ class Peminjaman extends Model
         return $this->belongsTo(Buku::class);
     }
 
-    public function Pengunjung()
+    public function pengunjung()
     {
         return $this->belongsTo(Pengunjung::class);
     }

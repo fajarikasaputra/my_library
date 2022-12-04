@@ -77,6 +77,6 @@ Route::resource('buku', BukuController::class);
 Route::resource('peminjaman', PeminjamanController::class);
 Route::resource('pengunjung', PengunjungController::class);
 Route::resource('pengembalian', PengembalianController::class);
-Route::resource('riwayat', RiwayatPeminjaman::class);
+// Route::resource('riwayat', RiwayatPeminjaman::class);
 
 // Route::resource('/peminjaman', PeminjamanController::class);

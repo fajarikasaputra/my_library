@@ -23,9 +23,7 @@
         <form method="POST" action="{{ url('peminjaman/' . $peminjaman->id) }}">
             @csrf
             <input type="hidden" name="_method" value="PATCH">
-
             <div class="container">
-
                 <div class="row">
                     <div class="col-xs-12">
                         <div class="box">
@@ -38,8 +36,9 @@
                                             <label for="">Pilih Judul Buku</label>
                                             <select name="buku_id" class="form-control selectpicker" id="select-country"
                                                 data-live-search="true">
-                                                @foreach ($buku as $item)
-                                                    <option value="{{ $item->judul }}">{{ $item->judul }}</option>
+                                                @foreach ($peminjaman->$buku as $item)
+                                                    <option value="{{ $peminjaman->id }}">
+                                                        {{ $item->judul }}</option>
                                                 @endforeach
                                                 {{-- @foreach ($buku as $item)
                                                     <option value="{{ $item->id }}">{{ $item->judul }}</option>
@@ -49,9 +48,9 @@
 
                                             <select name="pengunjung_id" class="form-control selectpicker"
                                                 id="select-country" data-live-search="true">
-                                                {{-- @foreach ($pengunjung as $data)
-                                                    <option value="{{ $data->id }}"> {{ $data->nama }}</option>
-                                                @endforeach --}}
+                                                {{-- @foreach ($pengunjung as $data) --}}
+                                                {{-- <option value="{{ $pengunjung->id }}"> {{ $pengunjung->nama }}</option> --}}
+                                                {{-- @endforeach --}}
                                             </select>
                                             {{-- <select name="pengunjung_id" id="brow"> --}}
                                             {{-- </select> --}}

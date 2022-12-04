@@ -2,6 +2,12 @@
 
 @section('container')
     <div class="mx-auto mt-5" style="width: 900px;">
+        <nav class="navbar navbar-light bg-light mt-5">
+            <form action="/peminjaman" method="GET" class="form-inline">
+                <input class="form-control mr-sm-2" name="search" type="search" placeholder="Search..">
+                <button class="btn btn-info" type="submit">Search</button>
+            </form>
+        </nav>
         <a class="btn btn-info mt-5 mb-5" href="{{ url('peminjaman/create') }}">Tambah Peminjam</a>
         <table class="table">
             <thead class="mt-5 table ">
@@ -33,4 +39,5 @@
                 @endforeach
             </tbody>
         </table>
+        {{ $peminjaman->links() }}
     @endsection

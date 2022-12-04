@@ -16,12 +16,16 @@ class PeminjamanController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
         $peminjaman = Peminjaman::all();
         $pengunjung = Pengunjung::all();
-
         $buku = Buku::all();
+        if ($request->has('search')) {
+            $peminjaman = Peminjaman::where('judul', 'LIKE', '%' . $request->search . '$')->paginate(5);
+        } else {
+            $peminjaman = Peminjaman::paginate(5);
+        }
         return view('peminjaman', compact('buku', 'pengunjung', 'peminjaman'), [
             'title' => 'Peminjaman'
         ]);
@@ -60,7 +64,7 @@ class PeminjamanController extends Controller
         $peminjaman->save();
 
 
-        return redirect('riwayat');
+        return redirect('peminjaman');
     }
 
     /**
@@ -103,11 +107,13 @@ class PeminjamanController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $buku = Buku::find($id);
+        $pengunjung = Pengunjung::find($id);
         $peminjaman = Peminjaman::find($id);
-        $pengunjung = Pengunjung::all();
+        $peminjaman = Peminjaman::all();
         $peminjaman->save();
 
-        return redirect('peminjaman');
+        return redirect('peminjaman', compact('buku', 'peminjaman', 'pengunjung'));
     }
 
     /**
