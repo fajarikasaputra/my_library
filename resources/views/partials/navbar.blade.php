@@ -4,9 +4,9 @@
             <div class="backdrop"></div>
             <div class="vertical_bar">
                 <div class="profile_info">
-                    <div class="img_holder">
+                    {{-- <div class="img_holder">
                         <img src="pic.png" alt="profile_pic" />
-                    </div>
+                    </div> --}}
                     <p class="title">myLibrary</p>
                     {{-- <p class="sub_title">aniabukstein@gmail.com</p> --}}
                 </div>
@@ -29,11 +29,7 @@
                         </a></li>
                 </ul>
 
-                <ul class="social">
-                    <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
-                    <li><a href="#"><i class="fab fa-twitter"></i></a></li>
-                    <li><a href="#"><i class="fab fa-instagram"></i></a></li>
-                </ul>
+
             </div>
         </div>
         <div class="main_container">

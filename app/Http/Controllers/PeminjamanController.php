@@ -17,34 +17,53 @@ class PeminjamanController extends Controller
      * @return \Illuminate\Http\Response
      */
 
-    public function autocomplete(Request $request)
+    // public function autocomplete(Request $request)
 
-    {
+    // {
 
-        $buku = Buku::select("name")
+    //     $buku = Buku::select("name")
 
-            ->where("judul", "LIKE", "%{$request->query}%")
+    //         ->where("judul", "LIKE", "%{$request->query}%")
 
-            ->get();
+    //         ->get();
 
 
 
-        return response()->json($buku);
-    }
+    //     return response()->json($buku);
+    // }
 
 
     public function index(Request $request)
     {
         // $peminjaman = Peminjaman::all();
         $pengunjung = Pengunjung::all();
+        // $pengunjung = Pengunjung::all()->nama;
+
         $buku = Buku::all();
         if ($request->has('search')) {
-            $peminjaman = Peminjaman::where('created_at', 'LIKE', '%' . $request->search . '%')
+            $peminjaman = Peminjaman::where('tanggal', 'LIKE', '%' . $request->search . '%')
+                // ->orWhere('nama', 'LIKE', '%' . $request->search . '%')
                 ->orWhere('jumlah', 'LIKE', '%' . $request->search . '%')
+
                 ->paginate(5);
         } else {
             $peminjaman = Peminjaman::paginate(5);
         }
+
+        // $peminjaman = Peminjaman::whereHas('pengunjung', function ($query) use ($request) {
+        //     $query->where('nama', 'like', '%' . $request->search . '%');
+        // })->whereHas('buku', function ($query) use ($request) {
+        //     $query->where('judul', 'like', '%' . $request->search . '%');
+        // })->paginate(5);
+
+        $peminjaman = Peminjaman::whereHas('pengunjung', function ($query) use ($request) {
+            $query->where('nama', 'like', '%' . $request->search . '%')
+                ->orWhere('jaminan', 'like', '%' . $request->search . '%');
+        })->orWhereHas('buku', function ($query) use ($request) {
+            $query->where('judul', 'like', '%' . $request->search . '%');
+        })->paginate(5);
+
+
         return view('peminjaman', compact('buku', 'pengunjung', 'peminjaman'), [
             'title' => 'Peminjaman'
         ]);

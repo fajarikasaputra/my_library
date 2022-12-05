@@ -18,17 +18,36 @@ class PengembalianController extends Controller
      */
     public function index(Request $request)
     {
-        if ($request->has('search')) {
-            $pengunjung = Pengunjung::where('nama', 'LIKE', '%' . $request->search . '$')->paginate(5);
-        } else {
-            $pengembalian = Pengembalian::paginate(5);
-        }
         $peminjaman = Peminjaman::all();
         // $pengembalian = Pengembalian::all();
         $pengunjung = Pengunjung::all();
         $buku = Buku::all();
+        if ($request->has('search')) {
+            $pengembalian = Pengembalian::where('id', 'LIKE', '%' . $request->search . '$')
+                ->orWhereHas('peminjaman', function ($query) use ($request) {
+                    $query->where('id', 'LIKE', '%' . $request->search . '%')
+                        ->orWhereHas(
+                            'pengunjung',
+                            function ($query) use ($request) {
+                                $query->where('nama', 'LIKE', '%' . $request->search . '%');
+                            }
+                        )->orWhereHas(
+                            'buku',
+                            function ($query) use ($request) {
+                                $query->where('judul', 'LIKE', '%' . $request->search . '%');
+                            }
+                        );
+                })
+                ->paginate(5);
+            // $pengembalian = Pengembalian::whereHas('peminjaman', function ($query) use ($request) {
+        } else {
+            $pengembalian = Pengembalian::paginate(5);
+        }
+
+
         // $pengunjung = Pengunjung::all();
         // $bukuYGPINJAM = Peminjaman::where('buku_id', $search)->get();
+
 
         return view('pengembalian', compact('buku', 'peminjaman', 'pengembalian', 'pengunjung'), [
             'title' => 'Pengembalian'
