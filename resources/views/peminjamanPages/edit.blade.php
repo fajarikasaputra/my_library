@@ -60,7 +60,12 @@
                                             <div class="form-group">
                                                 <label for="inputTanggal">Jumlah</label>
                                                 <input type="text" class="form-control" id="tanggal"
-                                                    placeholder="tanggal" name="jumlah">
+                                                    placeholder="tanggal" name="jumlah" value="{{ $peminjaman->jumlah }}">
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="inputTanggal">Tanggal</label>
+                                                <input type="date" class="form-control" id="tanggal"
+                                                    placeholder="tanggal" name="tanggal" value="{{ $peminjaman->tanggal }}">
                                             </div>
                                             {{-- Jumlah: <input type="text" name="jumlah"><br /> --}}
                                             <div class="form-group center">

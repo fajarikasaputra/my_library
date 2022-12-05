@@ -16,6 +16,23 @@ class PeminjamanController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+    public function autocomplete(Request $request)
+
+    {
+
+        $buku = Buku::select("name")
+
+            ->where("judul", "LIKE", "%{$request->query}%")
+
+            ->get();
+
+
+
+        return response()->json($buku);
+    }
+
+
     public function index(Request $request)
     {
         // $peminjaman = Peminjaman::all();

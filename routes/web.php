@@ -80,3 +80,7 @@ Route::resource('pengembalian', PengembalianController::class);
 // Route::resource('riwayat', RiwayatPeminjaman::class);
 
 // Route::resource('/peminjaman', PeminjamanController::class);
+
+// Route::get('searchbuku', [BukuController::class, 'index'])->judul('search');
+
+// Route::get('autocomplete', [BukuController::class, 'autocomplete'])->judul('autocomplete');

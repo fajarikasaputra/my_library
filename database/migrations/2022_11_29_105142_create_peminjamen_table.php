@@ -16,6 +16,7 @@ return new class extends Migration
         Schema::create('peminjamen', function (Blueprint $table) {
             $table->id();
             $table->integer('jumlah');
+            $table->date('tanggal');
             $table->foreignId('buku_id');
             $table->foreignId('pengunjung_id');
             $table->timestamps();

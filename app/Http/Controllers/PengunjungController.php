@@ -16,7 +16,11 @@ class PengunjungController extends Controller
     public function index(Request $request)
     {
         if ($request->has('search')) {
-            $pengunjung = Pengunjung::where('Nama', 'LIKE', '%' . $request->search . '$')->paginate(5);
+            $pengunjung = Pengunjung::where('nama', 'LIKE', '%' . $request->search . '%',)
+                ->orWhere('alamat', 'LIKE', '%' . $request->search . '%')
+                ->orWhere('email', 'LIKE', '%' . $request->search . '%')
+                ->orWhere('jaminan', 'LIKE', '%' . $request->search . '%')
+                ->paginate(5);
         } else {
             $pengunjung = Pengunjung::paginate(5);
         }

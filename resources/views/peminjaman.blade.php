@@ -27,7 +27,7 @@
                         <th scope="row">{{ $item->buku->judul }}</th>
                         <td>{{ $item->pengunjung->nama }}</td>
                         <td>{{ $item->pengunjung->jaminan }}</td>
-                        <td>{{ $item->updated_at }}</td>
+                        <td>{{ $item->tanggal }}</td>
                         <td>{{ $item->jumlah }}</td>
                         <td><a class="btn btn-warning" href="{{ url('peminjaman/' . $item->id . '/edit') }}">Update</a></td>
                         <td>
