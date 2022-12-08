@@ -22,7 +22,7 @@ class PengunjungController extends Controller
                 ->orWhere('jaminan', 'LIKE', '%' . $request->search . '%')
                 ->paginate(5);
         } else {
-            $pengunjung = Pengunjung::paginate(5);
+            $pengunjung = Pengunjung::orderBy('nama', 'ASC')->paginate(5);
         }
 
         return view('pengunjung', compact(

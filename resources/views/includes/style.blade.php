@@ -53,7 +53,7 @@
     }
 
     .vertical_bar .profile_info .title {
-        font-size: 20px;
+        font-size: 30px;
         letter-spacing: 2px;
         color: #c99c33;
         font-weight: 700;
@@ -138,7 +138,7 @@
     }
 
     .top_bar .logo {
-        font-size: 24px;
+        font-size: 17px;
         font-weight: 700;
         text-transform: uppercase;
         color: #c99c33;

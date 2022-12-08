@@ -41,5 +41,6 @@
                 @endforeach
             </tbody>
         </table>
-        {{ $peminjaman->links() }}
+        {{-- {{ $peminjaman->links() }} --}}
+        {{ $peminjaman->appends(Request::except('page'))->links() }}
     @endsection

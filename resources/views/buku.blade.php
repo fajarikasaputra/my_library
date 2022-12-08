@@ -44,13 +44,8 @@
                 @endforeach
             </tbody>
         </table>
-        {{ $buku->links() }}
-
-
+        {{-- {{ $buku->links() }} --}}
+        {{ $buku->appends(Request::except('page'))->links() }}
 
     </div>
-@endsection
-
-@section('modal')
-    swal("hello world")
 @endsection

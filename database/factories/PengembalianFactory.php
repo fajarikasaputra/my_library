@@ -22,6 +22,7 @@ class PengembalianFactory extends Factory
         // $peminjamen_id = $this->faker->randomElement($peminjaman_ids)->id;
         $peminjaman = Peminjaman::pluck('id');
         return [
+            'tanggal' => $this->faker->dateTimeThisYear(),
             'peminjaman_id' => $this->faker->randomElement($peminjaman)
             // 'peminjaman_id' => Peminjaman::all()->random()->id(UPDATE),
             // 'peminjaman_id' => $this->factory->create(App\Peminjaman::class)->id,

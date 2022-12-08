@@ -17,6 +17,7 @@ return new class extends Migration
             $table->id();
             // $table->integer('jumlah');
             // $table->date('tanggal_pengembalian');
+            $table->date('tanggal');
             $table->foreignId('peminjaman_id');
             // $table->foreignId('pengunjung_id');
             $table->timestamps();

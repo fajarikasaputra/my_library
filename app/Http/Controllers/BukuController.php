@@ -24,9 +24,10 @@ class BukuController extends Controller
                 ->orWhere('penerbit', 'LIKE', '%' . request('search') . '%')
                 ->orWhere('tahun_terbit', 'LIKE', '%' . request('search') . '%')
                 ->orWhere('stok', 'LIKE', '%' . request('search') . '%')
+                ->orderBy('judul')
                 ->paginate(5);
         } else {
-            $buku = Buku::paginate(5);
+            $buku = Buku::orderBy('judul', 'ASC')->paginate(5);
         }
         return view('buku', compact(
             'buku'

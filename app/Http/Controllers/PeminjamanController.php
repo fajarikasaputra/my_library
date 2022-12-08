@@ -36,13 +36,18 @@ class PeminjamanController extends Controller
     public function index(Request $request)
     {
         // $peminjaman = Peminjaman::all();
-        $pengunjung = Pengunjung::all();
+        // $peminjaman = Peminjaman::whereHas('pengunjung', function ($query) use ($request) {
+        //     $query->where('nama', 'like', '%' . $request->search . '%');
+        // })->whereHas('buku', function ($query) use ($request) {
+        //     $query->where('judul', 'like', '%' . $request->search . '%');
+        // })->paginate(5);
         // $pengunjung = Pengunjung::all()->nama;
+        // ->orWhere('nama', 'LIKE', '%' . $request->search . '%')
+        $pengunjung = Pengunjung::all();
 
         $buku = Buku::all();
         if ($request->has('search')) {
-            $peminjaman = Peminjaman::where('tanggal', 'LIKE', '%' . $request->search . '%')
-                // ->orWhere('nama', 'LIKE', '%' . $request->search . '%')
+            $peminjaman = Peminjaman::whereMonth('tanggal', 'LIKE', '%' . $request->search . '%')
                 ->orWhere('jumlah', 'LIKE', '%' . $request->search . '%')
 
                 ->paginate(5);
@@ -50,18 +55,14 @@ class PeminjamanController extends Controller
             $peminjaman = Peminjaman::paginate(5);
         }
 
-        // $peminjaman = Peminjaman::whereHas('pengunjung', function ($query) use ($request) {
-        //     $query->where('nama', 'like', '%' . $request->search . '%');
-        // })->whereHas('buku', function ($query) use ($request) {
-        //     $query->where('judul', 'like', '%' . $request->search . '%');
-        // })->paginate(5);
 
-        $peminjaman = Peminjaman::whereHas('pengunjung', function ($query) use ($request) {
-            $query->where('nama', 'like', '%' . $request->search . '%')
-                ->orWhere('jaminan', 'like', '%' . $request->search . '%');
-        })->orWhereHas('buku', function ($query) use ($request) {
-            $query->where('judul', 'like', '%' . $request->search . '%');
-        })->paginate(5);
+        $peminjaman = Peminjaman::orderBy('tanggal', 'ASC')
+            ->whereHas('pengunjung', function ($query) use ($request) {
+                $query->where('nama', 'like', '%' . $request->search . '%')
+                    ->orWhere('jaminan', 'like', '%' . $request->search . '%');
+            })->orWhereHas('buku', function ($query) use ($request) {
+                $query->where('judul', 'like', '%' . $request->search . '%');
+            })->paginate(5);
 
 
         return view('peminjaman', compact('buku', 'pengunjung', 'peminjaman'), [

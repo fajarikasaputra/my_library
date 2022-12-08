@@ -27,7 +27,7 @@
                         <th scope="row">{{ $item->peminjaman->buku->judul }}</th>
                         <td>{{ $item->peminjaman->pengunjung->nama }}</td>
                         <td>{{ $item->peminjaman->pengunjung->jaminan }}</td>
-                        <td>{{ $item->updated_at }}</td>
+                        <td>{{ $item->tanggal }}</td>
                         <td><a class="btn btn-warning" href="{{ url('pengembalian/' . $item->id . '/edit') }}">Update</a>
                         </td>
                         <td>
@@ -41,5 +41,6 @@
                 @endforeach
             </tbody>
         </table>
-        {{ $pengembalian->links() }}
+        {{-- {{ $pengembalian->links() }} --}}
+        {{ $pengembalian->appends(Request::except('page'))->links() }}
     @endsection

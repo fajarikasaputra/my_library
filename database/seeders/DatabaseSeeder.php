@@ -19,6 +19,12 @@ class DatabaseSeeder extends Seeder
      * @return void
      */
     public function run()
+
+
+
+
+
+
     {
         // \App\Models\User::factory(10)->create();
 
@@ -27,9 +33,12 @@ class DatabaseSeeder extends Seeder
         //     'email' => 'test@example.com',
         // ]);
 
-        Buku::factory(1000)->create();
-        Pengunjung::factory(1000)->create();
-        Peminjaman::factory(1000)->create();
-        Pengembalian::factory(1000)->create();
+
+
+
+        Buku::factory(58)->create();
+        Pengunjung::factory(50)->create();
+        Peminjaman::factory(100)->create();
+        Pengembalian::factory(70)->create();
     }
 }

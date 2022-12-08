@@ -40,8 +40,8 @@
                             <option value="{{ $item->id }}">{{ $item->judul }}</option>
                         @endforeach
                     </select>
-                    <label for="inputPeminjam">Peminjam</label>
 
+                    <label for="inputPeminjam">Peminjam</label>
                     <select name="pengunjung_id" class="form-control selectpicker" id="select-country"
                         data-live-search="true">
                         @foreach ($pengunjung as $data)
@@ -53,10 +53,10 @@
 
                     <div class="form-group">
                         <label for="inputTanggal">Jumlah</label>
-                        <input type="text" class="form-control" id="tanggal" placeholder="tanggal" name="jumlah">
+                        <input type="text" class="form-control" id="tanggal" placeholder="jumlah" name="jumlah">
                     </div>
                     <div class="form-group">
-                        <label for="inputTanggal">Jumlah</label>
+                        <label for="inputTanggal">Tanggal</label>
                         <input type="date" class="form-control" id="tanggal" placeholder="tanggal" name="tanggal">
                     </div>
                     {{-- Jumlah: <input type="text" name="jumlah"><br /> --}}

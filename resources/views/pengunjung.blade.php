@@ -46,7 +46,8 @@
                 @endforeach
             </tbody>
         </table>
-        {{ $pengunjung->links() }}
+        {{-- {{ $pengunjung->links() }} --}}
+        {{ $pengunjung->appends(Request::except('page'))->links() }}
 
 
 

@@ -41,6 +41,11 @@
                                 value="{{ $item->id }}">{{ $item->pengunjung->nama }}</option>
                         @endforeach
                     </select>
+                    <div class="form-group">
+                        <label for="inputTanggal">Tanggal Pengembalian</label>
+                        <input type="date" class="form-control" id="tanggal" placeholder="tanggal" name="tanggal"
+                            value="{{ $pengembalian->tanggal }}">
+                    </div>
                     {{-- <div class="form-group center"> --}}
                     <br />
                     <br />

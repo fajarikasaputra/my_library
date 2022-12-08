@@ -25,7 +25,7 @@ class PeminjamanFactory extends Factory
 
         return [
             'jumlah' => $this->faker->numberBetween(1, 4),
-            'tanggal' => $this->faker->date('Y_m_d'),
+            'tanggal' => $this->faker->dateTimeThisYear(),
             'pengunjung_id' => $this->faker->randomElement($pengunjung),
             'buku_id' => $this->faker->randomElement($buku),
             // 'buku_id' => $this->factory->create(App\Buku::class)->id,
