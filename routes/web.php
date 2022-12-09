@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\BukuController;
 // use App\Http\Controllers\homeController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\UserController;
 use App\Http\Controllers\RiwayatPeminjaman;
 use App\Http\Controllers\PeminjamanController;
 use App\Http\Controllers\PengunjungController;
@@ -77,12 +78,16 @@ use App\Http\Controllers\PengembalianController;
 
 
 // Route::post('/peminjaman', [homeController::class, 'peminjaman_post']);
-Route::resource('/home', HomeController::class);
-Route::resource('buku', BukuController::class);
-Route::resource('peminjaman', PeminjamanController::class);
-Route::resource('pengunjung', PengunjungController::class);
-Route::resource('pengembalian', PengembalianController::class);
-// Route::resource('riwayat', RiwayatPeminjaman::class);
+Route::middleware(['auth'])->group(function () {
+
+    Route::resource('/home', HomeController::class);
+    Route::resource('buku', BukuController::class);
+    Route::resource('peminjaman', PeminjamanController::class);
+    Route::resource('pengunjung', PengunjungController::class);
+    Route::resource('pengembalian', PengembalianController::class);
+    Route::resource('user', UserController::class);
+    // Route::resource('riwayat', RiwayatPeminjaman::class);
+});
 
 // Route::resource('/peminjaman', PeminjamanController::class);
 
