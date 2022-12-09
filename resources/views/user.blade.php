@@ -18,7 +18,6 @@
                     <th scope="col">Nama</th>
                     <th scope="col">Level</th>
                     <th scope="col">Email</th>
-                    <th scope="col">Password</th>
                     <th scope="colspan-2">Aksi</th>
                 </tr>
             </thead>
@@ -29,7 +28,6 @@
                         <td>{{ $userk->name }}</td>
                         <td>{{ $userk->level }}</td>
                         <td>{{ $userk->email }}</td>
-                        <td>{{ $userk->password }}</td>
 
                         <td><a class="btn btn-warning" href="{{ url('user/' . $userk->id . '/edit') }}">Update</a></td>
                         <td>

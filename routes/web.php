@@ -78,17 +78,59 @@ use App\Http\Controllers\PengembalianController;
 
 
 // Route::post('/peminjaman', [homeController::class, 'peminjaman_post']);
-Route::middleware(['auth'])->group(function () {
+// Route::middleware(['auth'])->group(function () {
+//     Route::resource('/home', HomeController::class);
+//     Route::resource('buku', BukuController::class);
+//     Route::resource('peminjaman', PeminjamanController::class);
+//     Route::resource('pengunjung', PengunjungController::class);
+//     Route::resource('pengembalian', PengembalianController::class);
+//     Route::resource('user', UserController::class);
 
-    Route::resource('/home', HomeController::class);
-    Route::resource('buku', BukuController::class);
-    Route::resource('peminjaman', PeminjamanController::class);
-    Route::resource('pengunjung', PengunjungController::class);
-    Route::resource('pengembalian', PengembalianController::class);
-    Route::resource('user', UserController::class);
-    // Route::resource('riwayat', RiwayatPeminjaman::class);
-});
+//     // Route::resource('riwayat', RiwayatPeminjaman::class);
+// });
 
+// Route::group(['middleware' => ['auth', 'admin']], function () {
+//     Route::group(
+//         ['middleware' => ['auth', 'pustakawan']],
+//         function () {
+//             Route::resource('/home', HomeController::class);
+//             Route::resource('buku', BukuController::class);
+//             Route::resource('peminjaman', PeminjamanController::class);
+//             Route::resource('pengunjung', PengunjungController::class);
+//             Route::resource('pengembalian', PengembalianController::class);
+//         }
+//     );
+//     Route::resource('user', UserController::class);
+// });
+
+// Route::group(['middleware' => ['auth', 'pustakawan']], function () {
+//     Route::resource('/home', HomeController::class);
+//     Route::resource('buku', BukuController::class);
+//     Route::resource('peminjaman', PeminjamanController::class);
+//     Route::resource('pengunjung', PengunjungController::class);
+//     Route::resource('pengembalian', PengembalianController::class);
+// });
+
+// (auth()->user()->level == 1)
+// Route::middleware(['middleware' => 'admin'])->group(function () {
+Route::resource('/home', HomeController::class)->middleware('auth', 'admin', 'pustakawan');
+Route::resource('buku', BukuController::class)->middleware('auth', 'admin', 'pustakawan');
+Route::resource('peminjaman', PeminjamanController::class)->middleware('auth', 'admin', 'pustakawan');
+Route::resource('pengunjung', PengunjungController::class)->middleware('auth', 'admin', 'pustakawan');
+Route::resource('pengembalian', PengembalianController::class)->middleware('auth', 'admin', 'pustakawan');
+Route::resource('user', UserController::class)->middleware('auth', 'admin');
+// Route::resource('riwayat', RiwayatPeminjaman::class);
+// });
+
+// Route::middleware(['middleware' => 'pustakawan'])->group(function () {
+//     Route::resource('/home', HomeController::class);
+//     Route::resource('buku', BukuController::class);
+//     Route::resource('peminjaman', PeminjamanController::class);
+//     Route::resource('pengunjung', PengunjungController::class);
+//     Route::resource('pengembalian', PengembalianController::class);
+//     // Route::resource('user', UserController::class);
+//     // Route::resource('riwayat', RiwayatPeminjaman::class);
+// });
 // Route::resource('/peminjaman', PeminjamanController::class);
 
 // Route::get('searchbuku', [BukuController::class, 'index'])->judul('search');
