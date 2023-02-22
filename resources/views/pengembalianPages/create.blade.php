@@ -16,7 +16,7 @@
                 {{-- @dd($peminjam) --}}
                 <select name="peminjaman_id" class="form-control selectpicker" id="select-country" data-live-search="true">
                     @foreach ($peminjaman as $item)
-                        <option value="{{ $item->id }}">{{ $item->pengunjung->nama }}</option>
+                        <option value="{{ $item->id }}">{{ $item->pengunjung->nama }} | {{ $item->buku->judul }}</option>
                     @endforeach
                 </select>
                 <div class="form-group">

@@ -3,11 +3,19 @@
 @section('container')
     <br />
     <div class="mx-auto mt-5" style="width: 900px;">
-        <form method="POST" action="{{ url('buku') }}">
+        <form method="POST" action="{{ url('buku') }}" enctype="multipart/form-data">
             @csrf
+            {{-- <div class="form-group">
+                <label for="inputJudul">Cover</label>
+                <input type="file" class="form-control" id="judul" placeholder="Cover" name="foto">
+            </div> --}}
             <div class="form-group">
                 <label for="inputJudul">Judul</label>
                 <input type="text" class="form-control" id="judul" placeholder="Judul" name="judul">
+            </div>
+            <div class="form-group">
+                <label for="inputJudul">ISBN</label>
+                <input type="text" class="form-control" id="judul" placeholder="ISBN" name="isbn">
             </div>
             <div class="form-group">
                 <label for="inputPenulis">Penulis</label>

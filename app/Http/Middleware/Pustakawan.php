@@ -16,7 +16,7 @@ class Pustakawan
      */
     public function handle(Request $request, Closure $next)
     {
-        if (auth()->user()->level == 2) {
+        if (auth()->user()->level == 'pustakawan') {
             return $next($request);
         }
         return redirect('/');

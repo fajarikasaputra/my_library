@@ -19,26 +19,24 @@ class DatabaseSeeder extends Seeder
      * @return void
      */
     public function run()
-
-
-
-
-
-
     {
-        // \App\Models\User::factory(10)->create();
+        \App\Models\User::factory(10)->create();
 
-        // \App\Models\User::factory()->create([
-        //     'name' => 'Test User',
-        //     'email' => 'test@example.com',
-        // ]);
+        \App\Models\User::factory()->create([
+            'name' => 'Fajar Ika Saputra',
+            'email' => 'fajarikasaputra@gmail.com',
+            'password' => bcrypt('12345678'),
+            'level' => 'admin',
+        ]);
 
+        // Buku::factory(58)->create();
+        // Pengunjung::factory(50)->create();
+        // Peminjaman::factory(100)->create();
+        // Pengembalian::factory(70)->create();
 
-
-
-        Buku::factory(58)->create();
-        Pengunjung::factory(50)->create();
-        Peminjaman::factory(100)->create();
-        Pengembalian::factory(70)->create();
+        Buku::factory(114)->create();
+        Pengunjung::factory(84)->create();
+        Peminjaman::factory(84)->create();
+        Pengembalian::factory(63)->create();
     }
 }

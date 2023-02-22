@@ -18,7 +18,7 @@ class BukuFactory extends Factory
     {
         return [
             'judul' => $this->faker->sentence(mt_rand(1, 4)),
-            // 'judul' => $this->faker->title(),
+            'isbn' => $this->faker->isbn13(),
             'penerbit' => $this->faker->name,
             'penulis' => $this->faker->name,
             'tahun_terbit' => $this->faker->year,

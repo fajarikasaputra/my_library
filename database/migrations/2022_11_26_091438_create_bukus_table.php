@@ -15,6 +15,8 @@ return new class extends Migration
     {
         Schema::create('bukus', function (Blueprint $table) {
             $table->id();
+            $table->string('foto');
+            $table->string('isbn');
             $table->string('judul');
             $table->string('penerbit');
             $table->string('penulis');

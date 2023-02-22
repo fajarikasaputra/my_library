@@ -118,7 +118,7 @@ Route::resource('buku', BukuController::class)->middleware('auth', 'admin', 'pus
 Route::resource('peminjaman', PeminjamanController::class)->middleware('auth', 'admin', 'pustakawan');
 Route::resource('pengunjung', PengunjungController::class)->middleware('auth', 'admin', 'pustakawan');
 Route::resource('pengembalian', PengembalianController::class)->middleware('auth', 'admin', 'pustakawan');
-Route::resource('user', UserController::class)->middleware('auth', 'admin');
+Route::resource('user', UserController::class)->middleware('admin');
 // Route::resource('riwayat', RiwayatPeminjaman::class);
 // });
 

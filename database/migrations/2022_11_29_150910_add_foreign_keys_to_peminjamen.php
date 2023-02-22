@@ -14,8 +14,8 @@ return new class extends Migration
     public function up()
     {
         Schema::table('peminjamen', function (Blueprint $table) {
-            $table->foreign('buku_id', 'buku_id_fk1')->references('id')->on('bukus')->onUpdate('CASCADE')->onDelete('RESTRICT');
-            $table->foreign('pengunjung_id', 'pengunjung_id_fk2')->references('id')->on('pengunjungs')->onUpdate('CASCADE')->onDelete('RESTRICT');
+            $table->foreign('buku_id', 'buku_id_fk1')->references('id')->on('bukus')->onUpdate('CASCADE')->onDelete('CASCADE');
+            $table->foreign('pengunjung_id', 'pengunjung_id_fk2')->references('id')->on('pengunjungs')->onUpdate('CASCADE')->onDelete('CASCADE');
         });
     }
 

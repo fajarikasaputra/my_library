@@ -18,8 +18,7 @@ class PengembalianController extends Controller
      */
     public function index(Request $request)
     {
-        // $pengembalian = Pengembalian::all();
-        // $pengembalian = Pengembalian::whereHas('peminjaman', function ($query) use ($request) {
+
         $peminjaman = Peminjaman::all();
         $pengunjung = Pengunjung::all();
         $buku = Buku::all();
@@ -44,10 +43,6 @@ class PengembalianController extends Controller
             $pengembalian = Pengembalian::orderBy('tanggal', 'ASC')
                 ->paginate(5);
         }
-
-
-        // $pengunjung = Pengunjung::all();
-        // $bukuYGPINJAM = Peminjaman::where('buku_id', $search)->get();
 
 
         return view('pengembalian', compact('buku', 'peminjaman', 'pengembalian', 'pengunjung'), [
@@ -134,10 +129,6 @@ class PengembalianController extends Controller
      */
     public function update(Request $request, $id)
     {
-        // $buku = Buku::find($id);
-        // $pengunjung = Pengunjung::find($id);
-        // $pengembalian = Pengembalian::all();
-        // $peminjaman = Peminjaman::find($id);
         $pengembalian = Pengembalian::find($id);
         $pengembalian->peminjaman_id = $request->peminjaman_id;
         $pengembalian->peminjaman->nama = $request->nama;

@@ -14,6 +14,7 @@ class UserController extends Controller
         if ($request->has('search')) {
             $user = User::where('name', 'LIKE', '%' . $request->search . '%')
                 ->orWhere('email', 'LIKE', '%' . request('search') . '%')
+                ->orWhere('level', 'LIKE', '%' . request('search') . '%')
                 ->paginate(5);
         } else {
             $user = User::orderBy('name', 'ASC')->paginate(5);

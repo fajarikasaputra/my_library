@@ -65,15 +65,12 @@ class BukuController extends Controller
      */
     public function store(Request $request)
     {
-        $buku = new Buku;
-        $buku->judul = $request->judul;
-        $buku->penerbit = $request->penerbit;
-        $buku->penulis = $request->penulis;
-        $buku->tahun_terbit = $request->tahun_terbit;
-        $buku->stok = $request->stok;
-        $buku->save();
-
-
+        $data = Buku::create($request->all());
+        if ($request->hasFile('foto')) {
+            $request->file('foto')->move('coverbuku/', $request->file('foto')->getClientOriginalName());
+            $data->foto = $request->file('foto')->getClientOriginalName();
+            $data->save();
+        }
         return redirect('buku');
     }
 
@@ -120,12 +117,17 @@ class BukuController extends Controller
         $buku = Buku::find($id);
         $buku->judul = $request->judul;
         $buku->penerbit = $request->penerbit;
+        $buku->isbn = $request->isbn;
+        $buku->foto = $request->foto;
         $buku->penulis = $request->penulis;
         $buku->tahun_terbit = $request->tahun_terbit;
         $buku->stok = $request->stok;
+
+        if ($request->hasFile('foto')) {
+            $request->file('foto')->move('coverbuku/', $request->file('foto')->getClientOriginalName());
+            $buku->foto = $request->file('foto')->getClientOriginalName();
+        }
         $buku->save();
-
-
         return redirect('buku');
     }
 

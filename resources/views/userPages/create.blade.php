@@ -13,10 +13,11 @@
                 <label for="inputPenulis">Email</label>
                 <input type="text" class="form-control" id="penulis" placeholder="email" name="email">
             </div>
-            <div class="form-group">
-                <label for="inputPenulis">Level</label>
-                <input type="text" class="form-control" id="penulis" placeholder="Level" name="level">
-            </div>
+            <label for="inputPenulis">Level</label>
+            <select id="inputState" name="level" class="form-control">
+                <option>admin</option>
+                <option>pustakawan</option>
+            </select>
             <div class="form-group">
                 <label for="inputPenerbit">Password</label>
                 <input type="password" class="form-control" id="penerbit" placeholder="password" name="password">

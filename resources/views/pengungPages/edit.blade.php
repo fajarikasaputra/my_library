@@ -25,7 +25,7 @@
             Email: <input type="text" name="email" value="{{ $pengunjung->email }}"><br />
             Alamat: <input type="text" name="alamat" value="{{ $pengunjung->alamat }}"><br /> --}}
             <label for="inputState">Jaminan</label>
-            <select id="inputState" name="jaminan" class="form-control" value="{{ $pengunjung->alamat }}">
+            <select id="inputState" name="jaminan" class="form-control" value="{{ $pengunjung->jaminan }}">
                 <option>KTP</option>
                 <option>KTM</option>
             </select> <br />

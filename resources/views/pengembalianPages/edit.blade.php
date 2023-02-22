@@ -38,7 +38,7 @@
                         data-live-search="true">
                         @foreach ($peminjaman as $item)
                             <option @if ($pengembalian->peminjaman_id == $item->id) selected="selected" @endif
-                                value="{{ $item->id }}">{{ $item->pengunjung->nama }}</option>
+                                value="{{ $item->id }}">{{ $item->pengunjung->nama }} | {{ $item->buku->judul }}</option>
                         @endforeach
                     </select>
                     <div class="form-group">

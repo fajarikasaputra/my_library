@@ -47,7 +47,7 @@ class PeminjamanController extends Controller
 
         $buku = Buku::all();
         if ($request->has('search')) {
-            $peminjaman = Peminjaman::whereMonth('tanggal', 'LIKE', '%' . $request->search . '%')
+            $peminjaman = Peminjaman::where('tanggal', 'LIKE', '%' . $request->search . '%')
                 ->orWhere('jumlah', 'LIKE', '%' . $request->search . '%')
 
                 ->paginate(5);

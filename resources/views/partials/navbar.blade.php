@@ -11,7 +11,7 @@
                     {{-- <p class="sub_title">aniabukstein@gmail.com</p> --}}
                 </div>
                 <ul class="menu">
-                    @if (auth()->user()->level == 1)
+                    @if (auth()->user()->level == 'admin')
                         <li><a href="/" class="{{ $title === 'Home' ? 'active' : '' }}">
                                 <span class="icon"><i class="fas fa-home"></i></span>
                                 <span class="text">Dashboard</span>
@@ -62,7 +62,7 @@
                                 <span class="text">Daftar User</span>
                             </a></li>
                     @endif
-                    @if (auth()->user()->level == 2)
+                    @if (auth()->user()->level == 'pustakawan')
                         <li><a href="/" class="{{ $title === 'Home' ? 'active' : '' }}">
                                 <span class="icon"><i class="fas fa-home"></i></span>
                                 <span class="text">Dashboard</span>

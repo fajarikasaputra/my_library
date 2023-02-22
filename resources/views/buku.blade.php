@@ -15,6 +15,8 @@
             <thead class="thead-dark">
                 <tr>
                     <th scope="col">ID Buku</th>
+                    <th scope="col">ISBN</th>
+                    {{-- <th scope="col">Cover</th> --}}
                     <th scope="col">Judul</th>
                     <th scope="col">Penulis</th>
                     <th scope="col">Penerbit</th>
@@ -27,6 +29,11 @@
                 @foreach ($buku as $bukuku)
                     <tr>
                         <th scope="row">{{ $bukuku->id }}</th>
+                        <th scope="row">{{ $bukuku->isbn }}</th>
+                        {{-- <th scope="row">{{ $bukuku->cover }}
+                            <img src="{{ asset('coverbuku/' . $bukuku->foto) }}" style="width: 40px">
+
+                        </th> --}}
                         <td>{{ $bukuku->judul }}</td>
                         <td>{{ $bukuku->penulis }}</td>
                         <td>{{ $bukuku->penerbit }}</td>

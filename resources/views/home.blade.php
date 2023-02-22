@@ -181,7 +181,7 @@
             ]);
 
             var options = {
-                title: 'Buku paling banyak dipinjam',
+                title: 'Jaminan terbanyak digunakan',
                 is3D: true,
             };
 

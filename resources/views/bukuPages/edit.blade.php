@@ -5,11 +5,21 @@
     <div class="mx-auto mt-5" style="width: 900px;">
         <form method="POST" action="{{ url('buku/' . $buku->id) }}">
             @csrf
-            <input type="hidden" name="_method" value="PATCH">
+            <input type="hidden" name="_method" value="PATCH" enctype="multipart/form-data">
+            {{-- <div class="form-group">
+                <label for="inputJudul">Cover</label>
+                <input type="file" class="form-control" id="judul" placeholder="Cover" name="foto"
+                    value="{{ $buku->foto }}">
+            </div> --}}
             <div class="form-group">
                 <label for="inputJudul">Judul</label>
                 <input type="text" class="form-control" id="judul" placeholder="Judul" name="judul"
                     value="{{ $buku->judul }}">
+            </div>
+            <div class="form-group">
+                <label for="inputJudul">ISBN</label>
+                <input type="text" class="form-control" id="judul" placeholder="ISBN" name="isbn"
+                    value="{{ $buku->isbn }}">
             </div>
             <div class="form-group">
                 <label for="inputPenulis">Penulis</label>
